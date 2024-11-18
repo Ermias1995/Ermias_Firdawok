@@ -1,0 +1,234 @@
+@media (prefers-reduced-motion: no-preference) {
+    * {
+      scroll-behavior: smooth;
+    }
+  }
+  body{
+    background-color:white;
+    font-style:Georgia, sans-serif;
+    margin:0;
+    background-color: #333;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  header >  #navbar{
+    background-color:#3a4566c5;
+    display:flex;
+    position:fixed;
+    padding: 0px 10px;
+    width:100%;
+    height:55px;
+    justify-content:flex-end;
+    align-items:center;
+  }
+  ul{
+    display:flex;
+  }
+  li {
+    list-style:none;
+    padding-right:15px;
+    font-size:1.5rem;
+  }
+  a{
+    text-decoration:none;
+  }
+  .nav-link{
+    color:white;
+  }
+  
+  img{
+    display:grid;
+    width:30vw;
+  }
+  .space{
+    width:100vw;
+    height:50px;
+  }
+  #welcome-section{
+    background-color:#333;
+    display:block;
+    position:relative;
+    width:100vw;
+    height:80vh;
+    padding-top:100px;
+    z-index:-1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+  }
+  #welcome-section > .text{
+   width:60%;
+   margin-bottom: 170px;
+  }
+  #welcome-section > .photo>img{
+    border-radius: 25px;
+    margin-right: 130px;
+    box-shadow: 2px 2px 10px #758bcc;
+   }
+  #welcome-section > div>h1{
+    font-size:2.1rem;
+    text-align:center;
+    color:white;
+    padding-top:20px;
+    text-align: left;
+    margin-left: 80px;
+  }
+  .icon{
+    font-weight: bold;
+    display: flex;
+    margin-right:65%;
+    padding-left:10px;
+  }
+  .icon li a{
+    text-decoration: none;
+    color: white;
+  }
+
+  #name{
+    display: block;
+    color:#758bcc;
+    margin-top: 2%;
+  }
+
+  #welcome-section > div > p{
+    font-size:1.5rem;
+    text-align:center;
+    color:#bebebe;
+    width: 60%;
+    text-align: left;
+    margin-left: 80px;
+  }
+  .About{
+    color: #bebebe;
+    text-align: center;
+    font-size: 2.2rem;
+    font-family: monospace;
+  }
+  #About{
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #111111;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    gap: 15px;
+    width: 60%;
+    margin: 0 auto;
+    padding: 15px;
+    padding-left: 30px;
+    color: rgb(219, 223, 226);
+  }
+
+  #About div{
+    width: 90%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #758bcc;
+    display: flex;
+    flex-direction: column;
+    gap: -10;
+    align-items: center;
+    padding: 5px;
+    padding-left: 10px;
+  }
+  #About div:hover{
+    background-color: #444444b9;
+  }
+  #About div i{
+    color: #758bcc;
+    font-size: 2rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+  }
+  .projects{
+    font-size: 3rem;
+    color: #bebebe;
+    text-align: center;
+  }
+  #projects{
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #111111;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  #projects #project:hover{
+    background-color:#444444b9;
+  }
+  #projects #project{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 10px #758bcc;
+    padding: 15px;
+    border-radius: 10px;
+    gap: 10px;
+  }
+
+  #projects div .title{
+    display: flex; 
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: larger; 
+    text-align: center;
+    margin-bottom: -5px;
+  }
+
+  #projects div a{
+    text-decoration: none;
+    color: white;
+  }
+  #projects div .builtIn{
+    display: flex;
+    gap: 10px;
+    font-size: 1.5rem;
+    align-items: left;
+    margin-top: 5px;
+  }
+  #projects div .builtIn img{
+    width: 40px; 
+    height: 35px
+  }
+
+  #professional_experiance{
+    display: grid;
+    color: #bebebe;
+    text-align: center;
+  }
+#professional_experiance .container{
+    display: grid;
+    width: 100%;
+    max-width: 1200px;
+    grid-template-columns: 1fr 3fr; /* Two columns with different widths */
+    gap: 20px;
+    padding: 20px;
+}
+
+  .contacts{
+    font-size: 2rem;
+    color: #bebebe;
+    text-align: center;
+  }
+  #contacts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+  #contacts div{
+    box-shadow: 2px 2px 10px #111111;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  #contacts div:hover{
+    background-color: #444444b9;
+  }
+  #contacts div a{
+    text-decoration: none;
+    color: #758bcc;
+  }
