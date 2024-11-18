@@ -15,12 +15,4 @@ I have experience with various technologies and programming languages, including
 - **Embedded Systems**: Arduino, Raspberry Pi, etc.
 - **Tools**: Git, GitHub, Visual Studio Code, etc.
 
-## Contact
-
-I would love to connect! You can reach me through the following platforms:
-
-- **Email**: [your-email@example.com](ermiascode@gmail.com)
-- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/ermias-firdawok-400496284/)
-- **GitHub**: [Your GitHub Profile](https://github.com/Ermias1995)
-
 Thank you for visiting my portfolio! Feel free to explore my projects and reach out if you have any questions or opportunities.
