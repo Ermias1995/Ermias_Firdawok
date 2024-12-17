@@ -8,6 +8,9 @@ body {
     background-color: #333;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
+    padding: 0;
+    z-index: -2;
+    box-sizing: none;
 }
 
 header > #navbar {
@@ -19,7 +22,7 @@ header > #navbar {
     height: 55px;
     justify-content: flex-start;
     align-items: center;
-    z-index: 1000; /* Ensure navbar is on top */
+    z-index: 10; 
 }
 
 ul {
@@ -63,10 +66,24 @@ img {
 }
 
 #welcome-section {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: -5px; 
+    padding: 4rem;
+    display: flex;
+    justify-content:center;
+    align-items: center; 
     padding-top: 10vh;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Keep it behind other content */
 }
 
 #welcome-section > .photo > img {
@@ -83,6 +100,30 @@ img {
     color: white;
     padding-top: 20px;
     margin-left: 80px;
+}
+
+.welcome-contacts{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    padding-left: 5rem;
+}
+
+.welcome-contacts > a {
+    font-size: 4rem;
+    border: 2px solid #758bcc;
+    padding: 1rem;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcome-contacts > a:hover {
+    background-color: rgba(117, 139, 204, 0.5);
+}
+.welcome-contacts > a > i{
+    color:#bebebe
 }
 
 .icon {
