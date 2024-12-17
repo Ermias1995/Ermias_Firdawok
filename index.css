@@ -138,12 +138,64 @@ img {
     text-align: left;
     color: #bebebe;
     width: 60%;
-    margin-left: 80px;
+    padding-left: 5rem;
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 p {
     font-size: 1.2rem;
 }
+
+/* Education style */
+#Education {
+    background-color: #758bcc70; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.university {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Subtle border */
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #333333; /* White background for the card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.img {
+    flex: 0 0 100px; /* Fixed width for the logo */
+    margin-right: 20px; /* Space between logo and text */
+}
+
+.img img {
+    width: 100%; /* Responsive logo */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.description {
+    flex: 1; /* Take remaining space */
+}
+
+.description p {
+    margin: 5px 0; /* Spacing between paragraphs */
+    color: #bebebe; /* Darker text color */
+}
+
+.description p:first-child {
+    font-weight: bold; /* Emphasize degree */
+    font-size: 1.2rem; /* Slightly larger font */
+}
+
+.description p:last-child {
+    font-style: italic; /* Italicize relevant coursework */
+    color: #bebebe; /* Lighter color for coursework */
+}
+
+/* //////////////////// */
 
 .About {
     color: #bebebe;
@@ -277,13 +329,17 @@ p {
 }
 
 #contacts div {
-    box-shadow: 2px 2px 10px #111111;
     border-radius: 5px;
-    padding: 10px;
+    border: 2px solid #758bcc;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #contacts div:hover {
-    background-color: #444444b9;
+    color: white;
+    background-color: rgba(117, 139, 204, 0.5);
 }
 
 #contacts div a {
@@ -354,5 +410,65 @@ p {
 
     .contacts {
         font-size: 1.5rem;
+    }
+    #Education {
+        padding: 15px; /* Reduced padding for smaller screens */
+    }
+
+    .university {
+        flex-direction: column; /* Stack the logo and description */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .img {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 10px; /* Add space below the logo */
+    }
+
+    .img img {
+        width: 80px; /* Adjust logo size for smaller screens */
+    }
+
+    .description p {
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    .description p:first-child {
+        font-size: 1.1rem; /* Slightly smaller degree text */
+    }
+    #welcome-section {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 2rem; /* Reduced padding */
+        align-items: center; /* Center items */
+    }
+
+    #welcome-section > .photo > img {
+        width: 80vw; /* Make photo larger on smaller screens */
+        margin: 0 auto; /* Center the image */
+        margin-bottom: 20px; /* Add space below the image */
+    }
+
+    #welcome-section > div > h1 {
+        font-size: 1.8rem; /* Smaller font size for the heading */
+        margin-left: 0; /* Remove left margin */
+        text-align: center; /* Center the heading */
+    }
+
+    .welcome-contacts {
+        padding-left: 0; /* Remove padding */
+        justify-content: center; /* Center social icons */
+        gap: 1rem; /* Reduce gap between icons */
+    }
+
+    .welcome-contacts > a {
+        font-size: 3rem; /* Smaller icon size */
+        padding: 0.5rem; /* Adjust padding */
+    }
+
+    #welcome-section > div > p {
+        font-size: 1.2rem; /* Smaller font size for paragraph */
+        width: 90%; /* Take full width */
+        padding-left: 0; /* Remove left padding */
+        text-align: center; /* Center text */
     }
 }
