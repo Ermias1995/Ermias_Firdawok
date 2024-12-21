@@ -36,7 +36,7 @@ li {
     font-size: 1.2rem;
     border-radius: 5px;
     padding: 5px;
-    box-shadow: inset 0 0 5px #758bcc;
+    box-shadow: 0 0 20px rgba(40, 40, 40);
 }
 
 a {
@@ -89,7 +89,7 @@ img {
 #welcome-section > .photo > img {
     border-radius: 25px;
     margin-right: 50%;
-    box-shadow: 2px 2px 10px #8f9dc5;
+    box-shadow: 0 0 20px rgba(40, 40, 40);
     width: 20vw;
     height: auto;
 }
@@ -139,8 +139,6 @@ img {
     color: #bebebe;
     width: 60%;
     padding-left: 5rem;
-    /* margin-left: auto;
-    margin-right: auto; */
 }
 
 p {
@@ -163,7 +161,7 @@ p {
     border-radius: 10px;
     padding: 15px;
     background-color: #333333; /* White background for the card */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    box-shadow: 0 0 20px rgba(40, 40, 40); /* Soft shadow */
 }
 
 .img {
@@ -195,8 +193,8 @@ p {
     color: #bebebe; /* Lighter color for coursework */
 }
 
-/* //////////////////// */
 
+/* About  */
 .About {
     color: #bebebe;
     text-align: center;
@@ -213,22 +211,23 @@ p {
     gap: 15px;
     width: 85%;
     margin: 0 auto;
-    padding: 15px;
+    padding: 2rem;
     color: rgb(219, 223, 226);
 }
 
 #About div {
     width: 90%;
     border-radius: 10px;
-    box-shadow: 2px 2px 10px #758bcc;
+    box-shadow: 0 0 20px rgba(40, 40, 40);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5px;
+    padding: 1rem;
 }
 
 #About div:hover {
-    background-color: #444444b9;
+    background: linear-gradient(145deg, rgba(40, 40, 40, 0.5), rgba(40, 40, 40));
+    cursor: pointer;
 }
 
 #About div i {
@@ -237,61 +236,117 @@ p {
     margin: 5px 0;
 }
 
-.projects {
-    font-size: 3rem;
-    color: #bebebe;
-    text-align: center;
-}
-
+/* Projects style */
 #projects {
-    border-radius: 10px;
-    display: grid;
+    overflow: hidden;
+    padding: 20px 0;
+    display: flex;
     justify-content: center;
-    grid-template-columns: 1fr 1fr; 
-    gap: 20px;
-    width: 70%;
+}
+.project-container {
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+#project {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
     margin: 0 auto;
-    padding: 10px;
+    width: 60%;
+    padding: 2rem;
+    gap: 3rem;
+    box-shadow: 0 0 20px rgba(40, 40, 40);
+    border-radius: 1rem;
+    color: #bebebe;
+    flex: 0 0 auto;
+    margin-right: 20px; 
+    scroll-snap-align: start;
+
+}
+.hidden {
+    display: none;
 }
 
-#projects #project {
-    height: auto;
+#project .left_section{
     display: flex;
     flex-direction: column;
-    box-shadow: 2px 2px 10px #758bcc;
-    padding: 15px;
-    border-radius: 10px;
+    gap: 1rem;
 }
-#projects #project:hover {
-    background-color: #444444b9;
+.left_section #image {
+    border-radius: 1rem;
+    transition: transform 0.3s ease-out;
 }
-
-#projects div .title {
-    display: flex; 
-    align-items: center;
-    gap: 10px;
-    color: white;
-    font-size: larger; 
-    text-align: center;
-    margin-bottom: -5px;
+.left_section #image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
-
-#projects div a {
-    text-decoration: none;
-    color: white;
+.left_section .title-techstack h1{
+    color: #758bcc;
+    font-size: medium;
 }
-
-#projects div .builtIn {
+.left_section .title-techstack .name{
+    margin-top: 3rem;
+    color: #bebebe;
+}
+.name h1{
+    font-size: 2rem;
+}
+.name p{
+    color: rgba(190, 190, 190, 0.5);
+    font-family:'Times New Roman', Times, serif;
+}
+.right_section .project_title{
     display: flex;
-    gap: 10px;
-    font-size: 1.5rem;
-    align-items: left;
-    margin-top: 5px;
+    justify-content: space-between;
+} 
+.project_title .builtIn{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.project_title .builtIn img{
+    width: 2rem;
+    height: 2rem;
+    object-fit:fill;
+}
+#github_link {
+    color: #758bcc;
+    text-decoration: none; 
+    font-size: 1rem;
 }
 
-#projects div .builtIn img {
-    width: 40px; 
-    height: 35px;
+#github_link:hover {
+    color: #5a8ac7;
+}
+
+#github_link i {
+    color: inherit;
+    margin-left: 5px;
+}
+
+/* Dot buttons style */
+.dot-buttons {
+    display: flex;
+    justify-content: center; 
+    margin-top: 10px;
+}
+
+.dot {
+    height: 15px; 
+    width: 15px;
+    margin: 0 5px;
+    background-color:#222222;
+    border-radius: 50%; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+    box-shadow: 0 0 20px rgba(40, 40, 40);
+}
+
+.dot.active {
+    background-color: #758bcc;
 }
 
 #professional_experiance {
