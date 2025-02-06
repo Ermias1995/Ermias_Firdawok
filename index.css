@@ -238,41 +238,68 @@ p {
 
 /* Projects style */
 #projects {
-    overflow: hidden;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    max-width: 65rem;
+    margin:0 auto;
+    padding: 2rem;
 }
+
 .project-container {
     display: flex;
-    justify-content: center;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
-#project {
+.website{
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     margin: 0 auto;
-    width: 60%;
+    width: 60rem;
     padding: 2rem;
-    gap: 3rem;
-    box-shadow: 0 0 20px rgba(40, 40, 40);
+    gap: 1rem;
     border-radius: 1rem;
     color: #bebebe;
     flex: 0 0 auto;
     margin-right: 20px; 
     scroll-snap-align: start;
-
+}
+.website img{
+    border-radius: 1rem;
+    object-fit:contain;
+    transition: transform 0.3s ease-out;
+}
+.website img:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.project {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 60rem;
+    padding: 2rem;
+    gap: 3rem;
+    border-radius: 1rem;
+    color: #bebebe;
+    flex: 0 0 auto;
+    margin-right: 20px; 
+    scroll-snap-align: start;
 }
 .hidden {
     display: none;
 }
 
-#project .left_section{
+.project .left_section{
     display: flex;
     flex-direction: column;
+    background-color: #313131;
+    padding: 1rem;
     gap: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 15px rgba(29, 29, 29, 0.8);
 }
 .left_section #image {
     border-radius: 1rem;
@@ -319,7 +346,7 @@ p {
 }
 
 #github_link:hover {
-    color: #5a8ac7;
+    color: rgb(90, 138, 199);
 }
 
 #github_link i {
@@ -332,20 +359,29 @@ p {
     display: flex;
     justify-content: center; 
     margin-top: 10px;
+    gap: 1rem;
 }
 
 .dot {
     height: 15px; 
     width: 15px;
     margin: 0 5px;
-    background-color:#222222;
+    background: radial-gradient(circle, rgba(48, 48, 48, 0.5) 0%, rgba(48, 48, 48, 0.9) 70%); /* Black hole effect */
     border-radius: 50%; 
     cursor: pointer; 
-    transition: background-color 0.3s;
-    box-shadow: 0 0 20px rgba(40, 40, 40);
+    transition: background-color 0.3s, transform 0.3s; /* Added transform for scale effect */
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8); /* Inner shadow for depth */
 }
 
 .dot.active {
+    background: radial-gradient(circle, rgba(90, 138, 199, 0.7) 0%, rgba(90, 138, 199, 0.9) 70%); /* Color when active */
+    transform: scale(1.2); /* Slightly scale up when active */
+}
+
+.dot:hover{
+    border-color: #758bcc;
+}
+.dot:active {
     background-color: #758bcc;
 }
 
@@ -365,6 +401,7 @@ p {
     padding: 20px;
     box-shadow: 0 2px 2px #8f9dc5;
 }
+
 #professional_experiance .container:hover {
     background-color: #444444b9;
 }

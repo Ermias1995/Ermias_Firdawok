@@ -6,7 +6,6 @@ function scrollToProject(index) {
     if (project) {
         project.scrollIntoView({ behavior: 'smooth', inline: 'center' });
         updateActiveDot(index);
-        hideInactiveProjects(index);
     }
 }
 
@@ -16,15 +15,6 @@ function updateActiveDot(activeIndex) {
     });
 }
 
-function hideInactiveProjects(activeIndex) {
-    Array.from(projects.children).forEach((project, index) => {
-        if (index !== activeIndex) {
-            project.classList.add('hidden'); // Add hidden class to inactive projects
-        } else {
-            project.classList.remove('hidden'); // Remove hidden class from active project
-        }
-    });
-}
 
 // Add event listeners to dots
 dots.forEach((dot) => {
@@ -34,6 +24,15 @@ dots.forEach((dot) => {
     });
 });
 
+let activeDot = null;
+
+function changeColor(dot) {
+    if (activeDot) {
+        activeDot.classList.remove('active'); // Remove active class from previously active dot
+    }
+    activeDot = dot; // Set the new active dot
+    dot.classList.add('active'); // Add active class to the clicked dot
+}
+
 // Initialize the first dot as active and show the first project
 updateActiveDot(0);
-hideInactiveProjects(0);
