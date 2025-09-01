@@ -11,7 +11,19 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-particlesJS('particles-js',
+// Get current theme for particles
+function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'dark';
+}
+
+// Initialize particles with theme-aware colors
+function initParticles() {
+    try {
+        const theme = getCurrentTheme();
+        const particleColor = theme === 'dark' ? '#ffffff' : '#2c3e50';
+        const lineColor = theme === 'dark' ? '#ffffff' : '#2c3e50';
+    
+    particlesJS('particles-js',
   
   {
     "particles": {
@@ -23,7 +35,7 @@ particlesJS('particles-js',
         }
       },
       "color": {
-        "value": "#ffffff"
+        "value": particleColor
       },
       "shape": {
         "type": "circle",
@@ -63,7 +75,7 @@ particlesJS('particles-js',
       "line_linked": {
         "enable": true,
         "distance": 150,
-        "color": "#ffffff",
+        "color": lineColor,
         "opacity": 0.4,
         "width": 1
       },
@@ -131,3 +143,12 @@ particlesJS('particles-js',
   }
 
 );
+    } catch (error) {
+        console.warn('Failed to initialize particles:', error);
+    }
+}
+
+// Initialize particles when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initParticles();
+});

@@ -1,38 +1,348 @@
-const projects = document.querySelector('.project-container');
-const dots = document.querySelectorAll('.dot');
+// Theme Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
 
-function scrollToProject(index) {
-    const project = projects.children[index];
-    if (project) {
-        project.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-        updateActiveDot(index);
+// Check for saved theme preference or default to dark
+const savedTheme = localStorage.getItem('theme') || 'dark';
+html.setAttribute('data-theme', savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    try {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    
+    // Update particles color based on theme
+    updateParticlesTheme(newTheme);
+    
+    // Update navbar background for new theme
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 100) {
+        if (newTheme === 'light') {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        }
+    } else {
+        if (newTheme === 'light') {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = 'none';
+        } else {
+            navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+            navbar.style.boxShadow = 'none';
+        }
+    }
+    
+    // Add a subtle animation effect for the welcome section
+    const welcomeSection = document.getElementById('welcome-section');
+    if (welcomeSection) {
+        welcomeSection.style.transition = 'background 0.3s ease';
+        setTimeout(() => {
+            welcomeSection.style.transition = '';
+        }, 300);
+    }
+    
+    // Add a subtle animation effect
+    document.body.style.transition = 'background-color 0.3s ease';
+    setTimeout(() => {
+        document.body.style.transition = '';
+    }, 300);
+    } catch (error) {
+        console.warn('Failed to toggle theme:', error);
+    }
+});
+
+// Function to update particles theme
+function updateParticlesTheme(theme) {
+    if (window.pJSDom && window.pJSDom[0]) {
+        const particles = window.pJSDom[0].pJS;
+        const particleColor = theme === 'dark' ? '#ffffff' : '#2c3e50';
+        const lineColor = theme === 'dark' ? '#ffffff' : '#2c3e50';
+        
+        // Update particle colors
+        if (particles.particles.array) {
+            particles.particles.array.forEach(particle => {
+                if (particle.color) {
+                    particle.color.value = particleColor;
+                }
+            });
+        }
+        
+        // Update line colors
+        if (particles.particles.line_linked) {
+            particles.particles.line_linked.color = lineColor;
+        }
+        
+        // Update particle color configuration
+        if (particles.particles.color) {
+            particles.particles.color.value = particleColor;
+        }
+        
+        // Redraw particles
+        if (particles.fn && particles.fn.particlesRefresh) {
+            particles.fn.particlesRefresh();
+        }
     }
 }
 
-function updateActiveDot(activeIndex) {
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
-    });
-}
+// Mobile Navigation
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
 
+hamburger.addEventListener('click', () => {
+    try {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    } catch (error) {
+        console.warn('Failed to toggle mobile menu:', error);
+    }
+});
 
-// Add event listeners to dots
-dots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-        const index = parseInt(dot.getAttribute('data-index'));
-        scrollToProject(index);
+// Close mobile menu when clicking on a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        try {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        } catch (error) {
+            console.warn('Failed to close mobile menu:', error);
+        }
     });
 });
 
-let activeDot = null;
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        try {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        } catch (error) {
+            console.warn('Failed to scroll to target:', error);
+        }
+    });
+});
 
-function changeColor(dot) {
-    if (activeDot) {
-        activeDot.classList.remove('active'); // Remove active class from previously active dot
-    }
-    activeDot = dot; // Set the new active dot
-    dot.classList.add('active'); // Add active class to the clicked dot
+// Project Navigation - Horizontal sliding carousel
+const projects = document.querySelectorAll('.project');
+const navDots = document.querySelectorAll('.nav-dot');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+let currentProjectIndex = 0;
+
+// Show first project by default, hide others
+if (projects.length > 0) {
+    projects[0].style.display = 'block';
+    navDots[0].classList.add('active');
+    
+    // Hide all other projects initially
+    projects.forEach((project, index) => {
+        if (index !== 0) {
+            project.style.display = 'none';
+        }
+    });
+    
+    // Update button states
+    updateNavigationButtons();
 }
 
-// Initialize the first dot as active and show the first project
-updateActiveDot(0);
+// Function to show project
+function showProject(index) {
+    // Remove active class from all dots
+    navDots.forEach(d => d.classList.remove('active'));
+    
+    // Add active class to clicked dot
+    navDots[index].classList.add('active');
+    
+    // Hide all projects
+    projects.forEach(project => {
+        project.style.display = 'none';
+    });
+    
+    // Show selected project
+    if (projects[index]) {
+        projects[index].style.display = 'block';
+        console.log(`Showing project ${index}:`, projects[index].querySelector('h3')?.textContent);
+        
+        // Ensure content is visible after a short delay
+        setTimeout(() => {
+            const projectContent = projects[index].querySelector('.project-content');
+            if (projectContent) {
+                projectContent.style.opacity = '1';
+                projectContent.style.visibility = 'visible';
+                console.log('Project content should be visible now');
+            }
+        }, 100);
+    }
+    
+    currentProjectIndex = index;
+    updateNavigationButtons();
+}
+
+// Function to update navigation button states
+function updateNavigationButtons() {
+    if (prevBtn && nextBtn) {
+        prevBtn.disabled = currentProjectIndex === 0;
+        nextBtn.disabled = currentProjectIndex === projects.length - 1;
+    }
+}
+
+// Navigation button event listeners
+if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+        try {
+            if (currentProjectIndex > 0) {
+                showProject(currentProjectIndex - 1);
+            }
+        } catch (error) {
+            console.warn('Failed to navigate to previous project:', error);
+        }
+    });
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+        try {
+            if (currentProjectIndex < projects.length - 1) {
+                showProject(currentProjectIndex + 1);
+            }
+        } catch (error) {
+            console.warn('Failed to navigate to next project:', error);
+        }
+    });
+}
+
+// Project navigation functionality - horizontal sliding
+navDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showProject(index);
+    });
+});
+
+// Navbar background on scroll
+window.addEventListener('scroll', () => {
+    try {
+        const navbar = document.getElementById('navbar');
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (window.scrollY > 100) {
+            if (currentTheme === 'light') {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            }
+        } else {
+            if (currentTheme === 'light') {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            } else {
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        }
+    } catch (error) {
+        console.warn('Failed to update navbar on scroll:', error);
+    }
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        try {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        } catch (error) {
+            console.warn('Failed to animate element:', error);
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        const animatedElements = document.querySelectorAll('.interest-card, .education-card, .experience-card, .contact-card');
+        
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    } catch (error) {
+        console.warn('Failed to initialize animations:', error);
+    }
+});
+
+// Typing effect for welcome section
+function typeWriter(element, text, speed = 100) {
+    try {
+        let i = 0;
+        element.innerHTML = '';
+        
+        function type() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            }
+        }
+        
+        type();
+    } catch (error) {
+        console.warn('Failed to start typing effect:', error);
+    }
+}
+
+// Initialize typing effect when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+
+        
+        const welcomeTitle = document.querySelector('.welcome-text h1');
+        if (welcomeTitle) {
+            const originalText = welcomeTitle.textContent;
+            typeWriter(welcomeTitle, originalText, 50);
+        }
+        
+        // Initialize particles with current theme
+        const currentTheme = html.getAttribute('data-theme');
+        setTimeout(() => {
+            updateParticlesTheme(currentTheme);
+        }, 500); // Wait for particles to load
+    } catch (error) {
+        console.warn('Failed to initialize page effects:', error);
+    }
+});
+
+// Add loading animation
+window.addEventListener('load', () => {
+    try {
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+        
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+    } catch (error) {
+        console.warn('Failed to add loading animation:', error);
+    }
+});

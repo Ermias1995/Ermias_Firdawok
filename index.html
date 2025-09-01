@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,418 +10,433 @@
           crossorigin="anonymous" 
           referrerpolicy="no-referrer" 
     />
-    <title>Ermias Firdawok</title>
+    <title>Ermias Firdawok - Portfolio</title>
 </head>
 <body>
     <header>
         <nav id="navbar">
-            <div class="icon">
-                <li><a href="#welcome-section">EF</a></li>
+            <div class="nav-brand">
+                <a href="#welcome-section">EF</a>
             </div>
-            <ul>
+            <ul class="nav-menu">
                 <li><a class="nav-link" href="#welcome-section">Home</a></li>
-                <li><a class="nav-link" href="#about_text">About</a></li>
+                <li><a class="nav-link" href="#About">About</a></li>
                 <li><a class="nav-link" href="#Education">Education</a></li>
                 <li><a class="nav-link" href="#projects">Projects</a></li>
                 <li><a class="nav-link" href="#contacts">Contact</a></li>
             </ul>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
         </nav>
     </header>
-    <div class="" style="height: 55px; z-index: -1; border: none;"></div>
+
     <main>
         <section id="welcome-section">
-            <div class="welcome-text">
-                <h1>ሰላም Everyone, I’m <span style="color: #74C0FC;">Ermias Firdawok</span></h1>
-                <p>A passionate 5th-year Electrical and Computer Engineering student. Currently, 
-                    I’m gaining hands-on experience as an Software Developer intern at the Ministry of Innovation in Ethiopia and InterTechhub, 
-                    where I’m excited to apply my skills and contribute to innovative projects.
-                </p>
-                <div class="welcome-contacts">
-                    <a href="https://github.com/Ermias1995">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://github.com/Ermias1995">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ermias-firdawok-400496284/">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+            <div id="particles-js"></div>
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h1>ሰላም Everyone, I'm <span class="highlight">Ermias Firdawok</span></h1>
+                    <p>A passionate 5th-year Electrical and Computer Engineering student. Currently, 
+                        I'm gaining hands-on experience as a Software Developer intern at the Ministry of Innovation in Ethiopia and InterTechhub, 
+                        where I'm excited to apply my skills and contribute to innovative projects.
+                    </p>
+                    <div class="welcome-contacts">
+                        <a href="https://github.com/Ermias1995" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ermias1995/" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ermias-firdawok-400496284/" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="photo">
+                    <img src="./images/Myphoto.jpg" alt="Ermias Firdawok"/>
                 </div>
             </div>
-            <div class="photo">
-                <img src="./images/Myphoto.jpg" alt="photo"/>
-            </div>
         </section>
-        <div id="particles-js"></div>
-        <div class="space"></div>
-        <p class="About">These are some of the things I'm intersted in ...</p>
-        <section id="About">
-            <div class="hardware">
-                <i class="fa-solid fa-microchip"></i>
-                <h2>Hardware Systems</h2>
-                <p>As a Computer Engineering Student, I'm facinated
-                   by designing and developing computer hardware systems 
-                   specifically embedded systems. The challenges I encountered
-                   Integrating the hardware component and the software developed
-                   give me a keen interst on this field. Though I know little basics,
-                   there are a lot to dig in the comming times...
-                </p>
-              </div>
-              <div class="Coding">
-                <i class="fa-solid fa-code"></i>
-                <h2>Coding</h2>
-                <p>In my related and interconnected field of study, 
-                   coding assumes a paramount role in fostering innovation and problem-solving. 
-                   It empowers me to create usefull software applications, automate repetitive tasks, 
-                   analyze vast amounts of data, and construct dynamic websites and mobile apps and 
-                   most importantly hardware programming.
-                </p>
-              </div>
-              <div class="Web-development">
-                <i class="fa-brands fa-dev"></i>
-                <h2>Web Development</h2>
-                <p>Web development is a field that excites me because it allows me to bring ideas to life on the internet. 
-                   I enjoy creating responsive and dynamic websites that provide a great user experience. 
-                   From front-end design to back-end development, I am passionate about every aspect of web development 
-                   and continuously strive to improve my skills and stay updated with the latest technologies.
-                </p>
-              </div>
-              <div class="AI_and_Machine_Learning">
-                <i class="fas fa-robot"></i>
-                <h2>AI and Machine Learning</h2>
-                <p>I know the field of Matching learning is creating greate impact in the world and everything is falling under its influence 
-                   So this boosts my curiosity about it. I just started learning the basics
-                   so I'm gonna have a lot of work.
-                </p>
-              </div>
-              <div class="Books">
-                <i class="fa-solid fa-book"></i>
-                <h2>Books</h2>
-                <p>I'm interested in books, especially history books. I read Ethiopian history books which help me understand more about my ancestors. 
-                   Reading these books not only provides me with knowledge about the past but also inspires me to appreciate the rich cultural heritage 
-                   and traditions of Ethiopia. Additionally, I enjoy exploring various genres, including science fiction, biographies, and technology-related 
-                   books, which broaden my perspective and fuel my curiosity.
-                </p>
-              </div>
-        </section>
-        <div class="space"></div>
 
-        <p class="About"><i class="fa-solid fa-graduation-cap" style="color: #74C0FC;"></i> Education</p>
-        <section id="Education" class="">
-            <div class="university">
-                <div class="img">
-                    <img src="./images/aauLogo.png" alt="AAU Logo">
-                </div>
-                <div class="description">
-                    <p>Bachelor of Science in Electrical and Computer Engineering</p>
-                    <p>Addis Ababa Institute of Technology | AAiT</p>
-                    <p>2021-2025 | Completed</p>
-                    <!-- <p>CGPA : 3.78 / 4</p> -->
-                    <p>Relevant Coursework: Digital Logic Design, Digital signal Processing, Computer Architecture
-                        and Organization, Microcomputer and Interfacing & Software Developement.
-                    </p>
-                </div>
-            </div>
-            <div class="university">
-                <div class="img">
-                    <img src="./images/stemLogo.png" alt="STEM Logo">
-                </div>
-                <div class="description">
-                    <p>Highschool</p>
-                    <p>Bahirdar University STEM Incubation Center</p>
-                    <p>2017–2021 | Completed</p>
-                    <p>EUEE- 598/700</p>
-                    <p>Relevant Coursework: Science, Mathematics, Physics and Fundamentals of Computer System</p>
+        <section id="About" class="section">
+            <div class="container">
+                <h2 class="section-title">These are some of the things I'm interested in...</h2>
+                <div class="interests-grid">
+                    <div class="interest-card">
+                        <i class="fa-solid fa-microchip"></i>
+                        <h3>Hardware Systems</h3>
+                        <p>As a Computer Engineering Student, I'm fascinated by designing and developing computer hardware systems 
+                           specifically embedded systems. The challenges I encountered integrating the hardware component and the software developed
+                           give me a keen interest in this field. Though I know little basics, there are a lot to dig in the coming times...</p>
+                    </div>
+                    <div class="interest-card">
+                        <i class="fa-solid fa-code"></i>
+                        <h3>Coding</h3>
+                        <p>In my related and interconnected field of study, coding assumes a paramount role in fostering innovation and problem-solving. 
+                           It empowers me to create useful software applications, automate repetitive tasks, analyze vast amounts of data, and construct 
+                           dynamic websites and mobile apps and most importantly hardware programming.</p>
+                    </div>
+                    <div class="interest-card">
+                        <i class="fa-brands fa-dev"></i>
+                        <h3>Web Development</h3>
+                        <p>Web development is a field that excites me because it allows me to bring ideas to life on the internet. 
+                           I enjoy creating responsive and dynamic websites that provide a great user experience. From front-end design to back-end development, 
+                           I am passionate about every aspect of web development and continuously strive to improve my skills.</p>
+                    </div>
+                    <div class="interest-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI and Machine Learning</h3>
+                        <p>I know the field of Machine Learning is creating great impact in the world and everything is falling under its influence. 
+                           So this boosts my curiosity about it. I just started learning the basics so I'm gonna have a lot of work.</p>
+                    </div>
+                    <div class="interest-card">
+                        <i class="fa-solid fa-book"></i>
+                        <h3>Books</h3>
+                        <p>I'm interested in books, especially history books. I read Ethiopian history books which help me understand more about my ancestors. 
+                           Reading these books not only provides me with knowledge about the past but also inspires me to appreciate the rich cultural heritage 
+                           and traditions of Ethiopia.</p>
+                    </div>
                 </div>
             </div>
         </section>
-        <div class="space"></div>
-        <p class="About"><i class="fa-solid fa-laptop-code" style="color: #74C0FC;"></i> Projects</p>
-        <section id="projects">
-        <div class="project-container">
-            <div class="project" id="Gojoye">
-                <div class="left_section">
-                    <img id="image" src="./images/Landlord_Home.png" alt="Gojoye"/>
-                    <div class="title-techstack">
-                        <h1>Gojoye House Renting and Buying website</1>
-                        <div class="name">
-                            <h2>Gojoye House Renting and Buying website</h2>
-                            <p>Ermias Firdawok - <span style="color: #74C0FC;">Frontend</span></p>
-                            <p>Samrawit Dawit - <span style="color: #74C0FC;">Backend</span></p>
-                            <p>Fitsum Mehari - <span style="color: #74C0FC;">Backend</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_section">
-                    <div class="project_title">
-                        <h1>Website</h1>
-                        <div class="builtIn">
-                            <img width="48" height="48" src="https://img.icons8.com/color/48/mongo-db.png" alt="mongo-db"/>
-                            <img width="40" height="40" src="https://img.icons8.com/office/40/express-js.png" alt="express-js"/>
-                            <i class="fa-brands fa-react" style="color: #74C0FC;"></i>
-                            <img width="48" height="48" src="https://img.icons8.com/fluency/48/node-js.png" alt="node-js"/>
-                        </div>
-                    </div>
-                    <p>This platform serves as a bridge between renters or buyers and landlords, focusing on the diverse 
-                        housing standards available in some cities mainly Addis Ababa, Ethiopia. Gojoye aims to simplify 
-                        and enhance the process of finding, renting, and buying properties, while providing landlords with 
-                        an efficient management tool for their listings.</p>
-                    <div class="" style="display: flex; gap: 1rem;">
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">MongoDB</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Express</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">React js</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Node js</p>
-                    </div>
-                    <div class="links" style="margin-top: 5rem;">
-                        <p>Online Demo can be found <a href="https://gojoye-frontend.onrender.com/" style="color: #74C0FC;">Here</a></p>
-                        <p>Source code can be found on <a href="https://github.com/Ermias1995/Gojoye" style="color: #74C0FC;">GitHub</i></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="project" id="Exclusive">
-                <div class="left_section">
-                    <img id="image" src="./images/Exclusive-home.png" alt="Exclusive"/>
-                    <div class="title-techstack">
-                        <h1>Exclusive Ecommerce Website</1>
-                        <div class="name">
-                            <h2>Exclusive Ecommerce Website</h2>
-                            <p>Ermias Firdawok</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_section">
-                    <div class="project_title">
-                        <h1>Website</h1>
-                        <div class="builtIn">
-                            <i class="fa-brands fa-react" style="color: #74C0FC;"></i>
-                            <img width="48" height="48" src="https://img.icons8.com/color/48/tailwindcss.png" alt="tailwindcss"/>
-                            <img width="64" height="64" src="https://img.icons8.com/cute-clipart/64/api.png" alt="api"/>
-                        </div>
-                    </div>
-                    <p>The Exclusive E-commerce app is a desktop-only e-commerce platform designed to provide a seamless shopping 
-                        experience for users. Built with modern web technologies, this application focuses on learning API integration 
-                        and state management. It features a user-friendly interface that allows customers to browse, search, and purchase 
-                        a variety of products.</p>
-                    <div class="" style="display: flex; gap: 1rem;">
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">React js</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Tailwind css</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Fakestore api</p>
-                    </div>
-                    <div class="links" style="margin-top: 5rem;">
-                        <p>Figma designs can be found <a href="https://www.figma.com/design/0LOaFhSqUk5TrI6y8VSuFB/E-commerce-desktop-only-desig-(Copy)?node-id=1-3&t=FqVgJahttcEolkIM-0" style="color: #74C0FC;">Here</a></p>
-                        <p>Online Demo can be found <a href="https://exclusivecommerce1.netlify.app/" style="color: #74C0FC;">Here</a></p>
-                        <p>Source code can be found on <a href="https://github.com/Ermias1995/E-commerce" style="color: #74C0FC;">GitHub</i></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="project" id="Gebeya">
-                <div class="left_section">
-                    <img id="image" src="./images/GebeyaMarket-home.png" alt="Gebeya"/>
-                    <div class="title-techstack">
-                        <h1>Gebeya Market App</1>
-                        <div class="name">
-                            <h2>Gebeya Market App</h2>
-                            <p>Ermias Firdawok</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_section">
-                    <div class="project_title">
-                        <h1>Website</h1>
-                        <div class="builtIn">
-                            <i class="fa-brands fa-react" style="color: #74C0FC;"></i>
-                            <img width="48" height="48" src="https://img.icons8.com/color/48/tailwindcss.png" alt="tailwindcss"/>
-                            <img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/external-redux-an-open-source-javascript-library-for-managing-application-state-logo-shadow-tal-revivo.png" alt="external-redux-an-open-source-javascript-library-for-managing-application-state-logo-shadow-tal-revivo"/>
-                        </div>
-                    </div>
-                    <p>The Gebeya Market app is an e-commerce platform designed to provide a seamless shopping 
-                        experience for users.Built with modern web technologies, this application features a user-friendly 
-                       interface that allows customers to browse, search, and purchase a wide variety of 
-                       products, including categories such as Men, Women, Kids, and Accessories.</p>
-                    <div class="" style="display: flex; gap: 1rem;">
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">React js</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Tailwind css</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Redux</p>
-                    </div>
-                    <div class="links" style="margin-top: 5rem;">
-                        <p>Figma designs can be found <a href="https://www.figma.com/design/bNMt7tMAXB2563nR38s6ew/Gebeya-market-app-(Copy)?node-id=0-1&t=oCJiPotjt3HLZsEn-1" style="color: #74C0FC;">Here</a></p>
-                        <p>Online Demo can be found <a href="https://gebeyamarketapp.netlify.app/" style="color: #74C0FC;">Here</a></p>
-                        <p>Source code can be found on <a href="https://github.com/Ermias1995/Gebeya-Market-App" style="color: #74C0FC;">GitHub</i></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="project" id="Home_Automation_System">
-                <div class="left_section">
-                    <img id="image" src="./images/Home-Automation-System.png" alt="Home-Automation-System"/>
-                    <div class="title-techstack">
-                        <h1>Home Automation System</1>
-                        <div class="name">
-                            <h2>Home Automation System</h2>
-                            <p>Ermias Firdawok</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_section">
-                    <div class="project_title">
-                        <h1>Hardware System</h1>
-                        <div class="builtIn">
-                            <img width="96" height="96" src="https://img.icons8.com/color/96/java-coffee-cup-logo--v1.png" alt="java-coffee-cup-logo--v1"/>
-                            <img width="96" height="96" src="https://img.icons8.com/color/96/arduino.png" alt="arduino"/>
-                        </div>
-                    </div>
-                    <p>In this project, I aim to showcase the integration of a smart home hardware system that includes lights, 
-                        a music player, a fan, and a door. These devices are controlled through software developed in Java</p>
-                    <div class="" style="display: flex; gap: 1rem;">
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Java</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Arduino</p>
-                        <p style="background-color: #333;color: #8f9dc5; padding: 4px;padding-left: 4px;padding-right: 4px; border-radius: 4px;box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8)">Proteus</p>
-                    </div>
-                    <div class="links" style="margin-top: 5rem;">
-                        <p>Source code can be found on <a href="https://github.com/Ermias1995/Home-Automation-System-using-JAVA-and-Arduino-" style="color: #74C0FC;">GitHub</i></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="project" id="Traffic_Light_Controller">
-                <div class="left_section">
-                    <img id="image" src="./images/whole circuit.PNG" alt="Traffic_Light_Controller"/>
-                    <div class="title-techstack">
-                        <h1>Traffic Light Controller</1>
-                        <div class="name">
-                            <h2>Traffic Light Controller</h2>
-                            <p>Ermias Firdawok</p>
-                            <p>Amanuel Bizuayehu</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="right_section">
-                    <div class="project_title">
-                        <h1>Hardware System</h1>
-                        <div class="builtIn">
-                            <img width="96" height="96" src="https://img.icons8.com/nolan/96/logic-gates-xnor.png" alt="logic-gates-xnor"/>
-                        </div>
-                    </div>
-                    <p>Here in this project we have tried to design a Traffic Light controller system that controls a pedestrian 
-                        who wants to cross a highway by using a push button to signal vehicles before he passes the road.</p>
-                    <div class="links" style="margin-top: 5rem;">
-                        <p>The Circuit Design can be found on <a href="https://github.com/Ermias1995/Traffic-Light-Controller" style="color: #74C0FC;">GitHub</i></a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- 
-            <div id="project" class="Traffic_Light_Controller">
-                <img src="./images/whole circuit.PNG" alt="Traffic_Light_Controller">
-                <div class="title"><a href=""><i class="fab fa-github"></i></a> Traffic Light Controller</div>
-                <label class="builtIn">
-                  <i class="fa-solid fa-microchip" style="color: #60d8f0;"></i>
-                  <img src="https://upload.wikimedia.org/wikipedia/en/5/5a/Proteus_Design_Suite_Atom_Logo.png"/>
-                </label>
-            </div>
-            <div id="project" class="Job_Board">
-                <img src="./images/JobBoard.jpg" alt="Job Board">
-                <div class="title"><a href=""><i class="fab fa-github"></i></a> Job Board</div>
-                <label class="builtIn">
-                  <i class="fa-brands fa-react" style="color: #74C0FC;"></i>
-                  <i class="fab fa-node" style="color: #65e67b;"></i>
-                </label>
-            </div>      -->
-        <div class="dot-buttons">
-            <a class="dot" href="#Gojoye" onclick="changeColor(this)"></a>
-            <a class="dot" href="#Exclusive" onclick="changeColor(this)"></a>
-            <a class="dot" href="#Gebeya" onclick="changeColor(this)"></a>
-            <a class="dot" href="#Home_Automation_System" onclick="changeColor(this)"></a>
-            <a class="dot" href="#Traffic_Light_Controller" onclick="changeColor(this)"></a>
-        </div>
-        </section>
-        <div class="space"></div>
-        <p id="title" class="About"><i class="fa-solid fa-briefcase" style="color: #74C0FC;"></i> Proffesional Experiance</p>
-        <section id="professional_experiance">
+
+        <section id="Education" class="section">
             <div class="container">
-                <div class="when_where">
-                    <h4 class="date"><i class="fa-solid fa-calendar-days" style="color: #74C0FC;"></i> Oct 2024 – present</h4>
-                    <h4 class="location"><i class="fa-solid fa-location-dot" style="color: rgb(156, 0, 0);"></i> Addis Ababa</h4>
-                    <h3>Software Developer Intern</h3>
-                </div>
-                <div class="description">
-                    <h4>Ministry of Innovation and Technology-Ethiopia</h4>
-                    <p>In this internship,I am gaining insights into the Software Development Lifecycle, enhancing my Communication and
-                        Collaboration skills, honing my Creative Problem Solving abilities, and improving my Execution and Productivity.
-                        Additionally,I am learning various technical skills, including web frameworks and database management tools.
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="when_where">
-                    <h4 class="date"><i class="fa-solid fa-calendar-days" style="color: #74C0FC;"></i> Oct 2024 – present</h4>
-                    <h4 class="location"><i class="fa-solid fa-location-dot" style="color: rgb(156, 0, 0);"></i> Addis Ababa</h4>
-                    <h3>IT support Technician Intern</h3>
-                </div>
-                <div class="description">
-                    <h4>Commercial Bank of Ethiopia-CBE</h4>
-                    <p>During my internship at the Ministry of Innovation in Ethiopia and InterTechhub, 
-                        I am gaining hands-on experience in network installation and maintenance, 
-                        which involves setting up and configuring network systems to ensure optimal performance.
-                        I am also deepening my understanding of networking principles, troubleshooting connectivity 
-                        issues, and ensuring secure data transmission. Additionally, I am learning about database server 
-                        administration, where I manage and optimize databases, perform backups, and ensure data integrity. 
-                        This multifaceted experience is enhancing my technical skills and preparing me for a future in the
-                        ever-evolving field of Electrical and Computer Engineering.
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="when_where">
-                    <h4 class="date"><i class="fa-solid fa-calendar-days" style="color: #74C0FC;"></i> Apr 2024 – May 2024</h4>
-                    <h4 class="location"><i class="fa-solid fa-location-dot" style="color: rgb(156, 0, 0);"></i> Remote</h4>
-                    <h3>Software Developer Intern</h3>
-                </div>
-                <div class="description">
-                    <h4>Prodigy Info Tech</h4>
-                    <p>In this internship,I am gaining insights into the Software Development Lifecycle, enhancing my Communication and
-                        Collaboration skills, honing my Creative Problem Solving abilities, and improving my Execution and Productivity.
-                        Additionally,I am learning various technical skills, including web frameworks and database management tools.
-                    </p>
-                </div>
-            </div>
-            <div class="container">
-                <div class="when_where">
-                    <h4 class="date"><i class="fa-solid fa-calendar-days" style="color: #74C0FC;"></i> Oct 2023 – present</h4>
-                    <h4 class="location"><i class="fa-solid fa-location-dot" style="color: rgb(156, 0, 0);"></i> Addis Ababa</h4>
-                    <h3>Tutor</h3>
-                </div>
-                <div class="description">
-                    <h4>Student Client</h4>
-                    <p>I served as an assistant teacher for third-year undergraduate students in two pivotal subjects: Java Object-Oriented Programming and Signals and Systems. 
-                        In this role, I provided support in various ways, including conducting review sessions, assisting with laboratory exercises, and offering one-on-one 
-                        tutoring to help students grasp complex concepts. Additionally, I am tutoring students in Applied Electronics, Electromagnetics, and Engineering Lab-2, 
-                        further expanding my teaching experience. Through targeted guidance and encouragement, I played a key role in helping students develop their programming 
-                        skills and understand the principles of signal processing and electronics. My efforts contributed to their overall success, enabling them to achieve satisfactory 
-                        results in all courses. This experience not only reinforced my own understanding of the material but also honed my communication and teaching skills, fostering a 
-                        collaborative learning environment.
-                    </p>
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-logo">
+                            <img src="./images/aauLogo.png" alt="AAU Logo">
+                        </div>
+                        <div class="education-content">
+                            <h3>Bachelor of Science in Electrical and Computer Engineering</h3>
+                            <p class="institution">Addis Ababa Institute of Technology | AAiT</p>
+                            <p class="duration">2021-2025 | Completed</p>
+                            <p class="coursework">Relevant Coursework: Digital Logic Design, Digital Signal Processing, Computer Architecture
+                                and Organization, Microcomputer and Interfacing & Software Development.</p>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-logo">
+                            <img src="./images/stemLogo.png" alt="STEM Logo">
+                        </div>
+                        <div class="education-content">
+                            <h3>High School</h3>
+                            <p class="institution">Bahirdar University STEM Incubation Center</p>
+                            <p class="duration">2017–2021 | Completed</p>
+                            <p class="score">EUEE- 598/700</p>
+                            <p class="coursework">Relevant Coursework: Science, Mathematics, Physics and Fundamentals of Computer System</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-        <div class="space"></div>
-        <p class="About"><i class="fas fa-handshake" style="color: #74C0FC;"></i> Let's work together</p>
-        <section id="contacts">
-            <div class="github">
-                <a id="profile-link" href="https://github.com/Ermias1995" target="_blank">
-                <i class="fab fa-github"></i> GitHub</a>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> Projects</h2>
+                <div class="project-container">
+                    <button class="project-nav-btn prev" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="project-nav-btn next" id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="project" id="Gojoye">
+                        <div class="project-image">
+                            <img src="./images/Landlord_Home.png" alt="Gojoye"/>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Gojoye House Renting and Buying Website</h3>
+                                <div class="project-team">
+                                    <p>Ermias Firdawok - <span class="role">Frontend</span></p>
+                                    <p>Samrawit Dawit - <span class="role">Backend</span></p>
+                                    <p>Fitsum Mehari - <span class="role">Backend</span></p>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <div class="tech-icons">
+                                    <img src="https://img.icons8.com/color/48/mongo-db.png" alt="MongoDB"/>
+                                    <img src="https://img.icons8.com/office/40/express-js.png" alt="Express.js"/>
+                                    <i class="fa-brands fa-react"></i>
+                                    <img src="https://img.icons8.com/fluency/48/node-js.png" alt="Node.js"/>
+                                </div>
+                            </div>
+                            <p class="project-description">This platform serves as a bridge between renters or buyers and landlords, focusing on the diverse 
+                                housing standards available in some cities mainly Addis Ababa, Ethiopia. Gojoye aims to simplify 
+                                and enhance the process of finding, renting, and buying properties, while providing landlords with 
+                                an efficient management tool for their listings.</p>
+                            <div class="project-tags">
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">Express</span>
+                                <span class="tag">React.js</span>
+                                <span class="tag">Node.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://gojoye-frontend.onrender.com/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/Ermias1995/Gojoye" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project" id="Exclusive">
+                        <div class="project-image">
+                            <img src="./images/Exclusive-home.png" alt="Exclusive"/>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Exclusive E-commerce Website</h3>
+                                <div class="project-team">
+                                    <p>Ermias Firdawok</p>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <div class="tech-icons">
+                                    <i class="fa-brands fa-react"></i>
+                                    <img src="https://img.icons8.com/color/48/tailwindcss.png" alt="Tailwind CSS"/>
+                                    <img src="https://img.icons8.com/cute-clipart/64/api.png" alt="API"/>
+                                </div>
+                            </div>
+                            <p class="project-description">The Exclusive E-commerce app is a desktop-only e-commerce platform designed to provide a seamless shopping 
+                                experience for users. Built with modern web technologies, this application focuses on learning API integration 
+                                and state management. It features a user-friendly interface that allows customers to browse, search, and purchase 
+                                a variety of products.</p>
+                            <div class="project-tags">
+                                <span class="tag">React.js</span>
+                                <span class="tag">Tailwind CSS</span>
+                                <span class="tag">FakeStore API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.figma.com/design/0LOaFhSqUk5TrI6y8VSuFB/E-commerce-desktop-only-desig-(Copy)?node-id=1-3&t=FqVgJahttcEolkIM-0" target="_blank" class="project-link">
+                                    <i class="fab fa-figma"></i> Figma Design
+                                </a>
+                                <a href="https://exclusivecommerce1.netlify.app/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/Ermias1995/E-commerce" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project" id="Gebeya">
+                        <div class="project-image">
+                            <img src="./images/GebeyaMarket-home.png" alt="Gebeya"/>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Gebeya Market App</h3>
+                                <div class="project-team">
+                                    <p>Ermias Firdawok</p>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <div class="tech-icons">
+                                    <i class="fa-brands fa-react"></i>
+                                    <img src="https://img.icons8.com/color/48/tailwindcss.png" alt="Tailwind CSS"/>
+                                    <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/external-redux-an-open-source-javascript-library-for-managing-application-state-logo-shadow-tal-revivo.png" alt="Redux"/>
+                                </div>
+                            </div>
+                            <p class="project-description">The Gebeya Market app is an e-commerce platform designed to provide a seamless shopping 
+                                experience for users. Built with modern web technologies, this application features a user-friendly 
+                                interface that allows customers to browse, search, and purchase a wide variety of 
+                                products, including categories such as Men, Women, Kids, and Accessories.</p>
+                            <div class="project-tags">
+                                <span class="tag">React.js</span>
+                                <span class="tag">Tailwind CSS</span>
+                                <span class="tag">Redux</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.figma.com/design/bNMt7tMAXB2563nR38s6ew/Gebeya-market-app-(Copy)?node-id=0-1&t=oCJiPotjt3HLZsEn-1" target="_blank" class="project-link">
+                                    <i class="fab fa-figma"></i> Figma Design
+                                </a>
+                                <a href="https://gebeyamarketapp.netlify.app/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Live Demo
+                                </a>
+                                <a href="https://github.com/Ermias1995/Gebeya-Market-App" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project" id="Home_Automation_System">
+                        <div class="project-image">
+                            <img src="./images/Home-Automation-System.png" alt="Home Automation System"/>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Home Automation System</h3>
+                                <div class="project-team">
+                                    <p>Ermias Firdawok</p>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <div class="tech-icons">
+                                    <img src="https://img.icons8.com/color/96/java-coffee-cup-logo--v1.png" alt="Java"/>
+                                    <img src="https://img.icons8.com/color/96/arduino.png" alt="Arduino"/>
+                                </div>
+                            </div>
+                            <p class="project-description">In this project, I aim to showcase the integration of a smart home hardware system that includes lights, 
+                                a music player, a fan, and a door. These devices are controlled through software developed in Java.</p>
+                            <div class="project-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Arduino</span>
+                                <span class="tag">Proteus</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Ermias1995/Home-Automation-System-using-JAVA-and-Arduino-" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project" id="Traffic_Light_Controller">
+                        <div class="project-image">
+                            <img src="./images/whole circuit.PNG" alt="Traffic Light Controller"/>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3>Traffic Light Controller</h3>
+                                <div class="project-team">
+                                    <p>Ermias Firdawok</p>
+                                    <p>Amanuel Bizuayehu</p>
+                                </div>
+                            </div>
+                            <div class="project-tech">
+                                <div class="tech-icons">
+                                    <img src="https://img.icons8.com/nolan/96/logic-gates-xnor.png" alt="Logic Gates"/>
+                                </div>
+                            </div>
+                            <p class="project-description">Here in this project we have tried to design a Traffic Light controller system that controls a pedestrian 
+                                who wants to cross a highway by using a push button to signal vehicles before he passes the road.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/Ermias1995/Traffic-Light-Controller" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i> Circuit Design
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-navigation" role="tablist" aria-label="Project navigation">
+                    <button class="nav-dot active" data-project="Gojoye" aria-label="Go to Gojoye project" role="tab" aria-selected="true"></button>
+                    <button class="nav-dot" data-project="Exclusive" aria-label="Go to Exclusive project" role="tab" aria-selected="false"></button>
+                    <button class="nav-dot" data-project="Gebeya" aria-label="Go to Gebeya project" role="tab" aria-selected="false"></button>
+                    <button class="nav-dot" data-project="Home_Automation_System" aria-label="Go to Home Automation System project" role="tab" aria-selected="false"></button>
+                    <button class="nav-dot" data-project="Traffic_Light_Controller" aria-label="Go to Traffic Light Controller project" role="tab" aria-selected="false"></button>
+                </div>
             </div>
-            <div class="insta">
-                <a id="profile-link" href="https://github.com/Ermias1995" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram</a>
+        </section>
+
+        <section id="professional_experiance" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-meta">
+                                <span class="date"><i class="fa-solid fa-calendar-days"></i> Oct 2024 – Present</span>
+                                <span class="location"><i class="fa-solid fa-location-dot"></i> Addis Ababa</span>
+                            </div>
+                            <h3>Software Developer Intern</h3>
+                            <h4>Ministry of Innovation and Technology-Ethiopia</h4>
+                        </div>
+                        <p>In this internship, I am gaining insights into the Software Development Lifecycle, enhancing my Communication and
+                            Collaboration skills, honing my Creative Problem Solving abilities, and improving my Execution and Productivity.
+                            Additionally, I am learning various technical skills, including web frameworks and database management tools.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-meta">
+                                <span class="date"><i class="fa-solid fa-calendar-days"></i> Oct 2024 – Present</span>
+                                <span class="location"><i class="fa-solid fa-location-dot"></i> Addis Ababa</span>
+                            </div>
+                            <h3>IT Support Technician Intern</h3>
+                            <h4>Commercial Bank of Ethiopia-CBE</h4>
+                        </div>
+                        <p>During my internship at the Ministry of Innovation in Ethiopia and InterTechhub, 
+                            I am gaining hands-on experience in network installation and maintenance, 
+                            which involves setting up and configuring network systems to ensure optimal performance.
+                            I am also deepening my understanding of networking principles, troubleshooting connectivity 
+                            issues, and ensuring secure data transmission.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-meta">
+                                <span class="date"><i class="fa-solid fa-calendar-days"></i> Apr 2024 – May 2024</span>
+                                <span class="location"><i class="fa-solid fa-location-dot"></i> Remote</span>
+                            </div>
+                            <h3>Software Developer Intern</h3>
+                            <h4>Prodigy Info Tech</h4>
+                        </div>
+                        <p>In this internship, I am gaining insights into the Software Development Lifecycle, enhancing my Communication and
+                            Collaboration skills, honing my Creative Problem Solving abilities, and improving my Execution and Productivity.
+                            Additionally, I am learning various technical skills, including web frameworks and database management tools.</p>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div class="experience-meta">
+                                <span class="date"><i class="fa-solid fa-calendar-days"></i> Oct 2023 – Present</span>
+                                <span class="location"><i class="fa-solid fa-location-dot"></i> Addis Ababa</span>
+                            </div>
+                            <h3>Tutor</h3>
+                            <h4>Student Client</h4>
+                        </div>
+                        <p>I served as an assistant teacher for third-year undergraduate students in two pivotal subjects: Java Object-Oriented Programming and Signals and Systems. 
+                            In this role, I provided support in various ways, including conducting review sessions, assisting with laboratory exercises, and offering one-on-one 
+                            tutoring to help students grasp complex concepts.</p>
+                    </div>
+                </div>
             </div>
-            <div class="linkedIn">
-                <a id="profile-link" href="https://www.linkedin.com/in/ermias-firdawok-400496284/" target="_blank">
-                <i class="fab fa-linkedin"></i> Linkedin</a>
+        </section>
+
+        <section id="contacts" class="section">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-handshake"></i> Let's Work Together</h2>
+                <div class="contact-grid">
+                    <a href="https://github.com/Ermias1995" target="_blank" class="contact-card">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/ermias1995/" target="_blank" class="contact-card">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ermias-firdawok-400496284/" target="_blank" class="contact-card">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
-    <footer>
 
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ermias Firdawok. All rights reserved.</p>
+        </div>
     </footer>
+
     <script type="text/javascript" src="./Javascript/particles.js"></script>
     <script type="text/javascript" src="./Javascript/app.js"></script>
     <script type="text/javascript" src="./index.js"></script>
