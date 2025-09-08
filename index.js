@@ -142,13 +142,37 @@ let currentProjectIndex = 0;
 
 // Show first project by default, hide others
 if (projects.length > 0) {
-    projects[0].style.display = 'block';
-    navDots[0].classList.add('active');
-    
-    // Hide all other projects initially
+    // Hide all projects first
     projects.forEach((project, index) => {
         if (index !== 0) {
             project.style.display = 'none';
+            project.style.opacity = '0';
+            project.style.visibility = 'hidden';
+        }
+    });
+    
+    // Show first project
+    const isMobile = window.innerWidth <= 768;
+    projects[0].style.display = isMobile ? 'block' : 'flex';
+    projects[0].style.opacity = '1';
+    projects[0].style.visibility = 'visible';
+    navDots[0].classList.add('active');
+    
+    // Ensure first project content is visible
+    const firstProjectContent = projects[0].querySelector('.project-content');
+    const firstProjectDescription = projects[0].querySelector('.project-description');
+    const firstProjectHeader = projects[0].querySelector('.project-header');
+    const firstProjectTeam = projects[0].querySelector('.project-team');
+    const firstProjectTech = projects[0].querySelector('.project-tech');
+    const firstProjectTags = projects[0].querySelector('.project-tags');
+    const firstProjectLinks = projects[0].querySelector('.project-links');
+    
+    // Make sure all content is visible
+    [firstProjectContent, firstProjectDescription, firstProjectHeader, firstProjectTeam, firstProjectTech, firstProjectTags, firstProjectLinks].forEach(element => {
+        if (element) {
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+            element.style.display = element === firstProjectContent ? 'flex' : '';
         }
     });
     
@@ -167,22 +191,39 @@ function showProject(index) {
     // Hide all projects
     projects.forEach(project => {
         project.style.display = 'none';
+        project.style.opacity = '0';
+        project.style.visibility = 'hidden';
     });
     
     // Show selected project
     if (projects[index]) {
-        projects[index].style.display = 'block';
+        // Check if mobile view
+        const isMobile = window.innerWidth <= 768;
+        projects[index].style.display = isMobile ? 'block' : 'flex';
+        projects[index].style.opacity = '1';
+        projects[index].style.visibility = 'visible';
+        
         console.log(`Showing project ${index}:`, projects[index].querySelector('h3')?.textContent);
         
-        // Ensure content is visible after a short delay
-        setTimeout(() => {
-            const projectContent = projects[index].querySelector('.project-content');
-            if (projectContent) {
-                projectContent.style.opacity = '1';
-                projectContent.style.visibility = 'visible';
-                console.log('Project content should be visible now');
+        // Ensure all content elements are visible
+        const projectContent = projects[index].querySelector('.project-content');
+        const projectDescription = projects[index].querySelector('.project-description');
+        const projectHeader = projects[index].querySelector('.project-header');
+        const projectTeam = projects[index].querySelector('.project-team');
+        const projectTech = projects[index].querySelector('.project-tech');
+        const projectTags = projects[index].querySelector('.project-tags');
+        const projectLinks = projects[index].querySelector('.project-links');
+        
+        // Make sure all content is visible
+        [projectContent, projectDescription, projectHeader, projectTeam, projectTech, projectTags, projectLinks].forEach(element => {
+            if (element) {
+                element.style.opacity = '1';
+                element.style.visibility = 'visible';
+                element.style.display = element === projectContent ? 'flex' : '';
             }
-        }, 100);
+        });
+        
+        console.log('Project content and description should be visible now');
     }
     
     currentProjectIndex = index;
@@ -344,5 +385,19 @@ window.addEventListener('load', () => {
         }, 100);
     } catch (error) {
         console.warn('Failed to add loading animation:', error);
+    }
+});
+
+// Handle window resize for responsive project display
+window.addEventListener('resize', () => {
+    try {
+        const isMobile = window.innerWidth <= 768;
+        projects.forEach((project, index) => {
+            if (project.style.display !== 'none') {
+                project.style.display = isMobile ? 'block' : 'flex';
+            }
+        });
+    } catch (error) {
+        console.warn('Failed to handle window resize:', error);
     }
 });
