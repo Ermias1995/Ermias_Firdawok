@@ -838,7 +838,10 @@ p {
 /* Timeline layout for Experience Section */
 #professional_experiance .experience-grid {
     position: relative;
-    grid-template-columns: 1fr 1fr;
+    display: block;
+    max-width: 1000px;
+    margin: 3rem auto 0;
+    padding: 0 2rem;
 }
 
 #professional_experiance .experience-grid::before {
@@ -864,6 +867,10 @@ p {
     background: var(--background-light);
     border: 1px solid var(--border-color);
     box-shadow: 0 10px 25px var(--shadow-dark);
+    margin-bottom: 3rem;
+    width: 45%;
+    padding: 2rem;
+    border-radius: 15px;
 }
 
 /* Connector dots */
@@ -878,20 +885,20 @@ p {
     box-shadow: 0 0 0 4px rgba(116, 192, 252, 0.15), 0 0 12px rgba(116, 192, 252, 0.5);
 }
 
-/* Left column items (odd) */
+/* Left side items (odd) */
 #professional_experiance .experience-card:nth-child(odd) {
-    grid-column: 1 / 2;
-    margin-right: 2rem;
+    margin-left: 0;
+    margin-right: auto;
 }
 
 #professional_experiance .experience-card:nth-child(odd)::before {
     right: -8px;
 }
 
-/* Right column items (even) */
+/* Right side items (even) */
 #professional_experiance .experience-card:nth-child(even) {
-    grid-column: 2 / 3;
-    margin-left: 2rem;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 #professional_experiance .experience-card:nth-child(even)::before {
@@ -907,8 +914,8 @@ p {
 /* Mobile: single column timeline */
 @media (max-width: 768px) {
     #professional_experiance .experience-grid {
-        grid-template-columns: 1fr;
-        padding-left: 1.25rem;
+        padding: 0 1.25rem;
+        margin: 3rem 1rem 0;
     }
 
     #professional_experiance .experience-grid::before {
@@ -920,13 +927,15 @@ p {
     #professional_experiance .experience-card,
     #professional_experiance .experience-card:nth-child(even),
     #professional_experiance .experience-card:nth-child(odd) {
-        grid-column: 1 / -1;
+        width: calc(100% - 2rem);
         margin: 0 0 1rem 1rem;
     }
 
     #professional_experiance .experience-card::before {
         left: -17px;
         right: auto;
+        width: 12px;
+        height: 12px;
     }
 }
 
