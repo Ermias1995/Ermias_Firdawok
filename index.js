@@ -353,10 +353,39 @@ function typeWriter(element, text, speed = 100) {
     }
 }
 
-// Initialize typing effect when page loads
+// Dynamic greeting text functionality
+function changeGreeting() {
+    try {
+        const greetingElement = document.getElementById('welcome-greeting');
+        if (greetingElement) {
+            const currentText = greetingElement.innerHTML;
+            
+            // Check if current text contains "ሰላም" (Amharic greeting)
+            if (currentText.includes('ሰላም')) {
+                // Change to English
+                greetingElement.innerHTML = currentText.replace('ሰላም', 'Hi');
+            } else if (currentText.includes('Hi')) {
+                // Change back to Amharic
+                greetingElement.innerHTML = currentText.replace('Hi', 'ሰላም');
+            }
+        }
+    } catch (error) {
+        console.warn('Failed to change greeting:', error);
+    }
+}
+
+// Add click event listener to the greeting
 document.addEventListener('DOMContentLoaded', () => {
     try {
-
+        const greetingElement = document.getElementById('welcome-greeting');
+        if (greetingElement) {
+            // Add cursor pointer style
+            greetingElement.style.cursor = 'pointer';
+            greetingElement.title = 'Click to switch between Amharic and English';
+            
+            // Add click event listener
+            greetingElement.addEventListener('click', changeGreeting);
+        }
         
         const welcomeTitle = document.querySelector('.welcome-text h1');
         if (welcomeTitle) {
