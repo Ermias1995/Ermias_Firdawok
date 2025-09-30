@@ -279,13 +279,8 @@ p {
 }
 
 #welcome-greeting {
-    cursor: pointer;
+    cursor: default;
     transition: var(--transition);
-}
-
-#welcome-greeting:hover {
-    transform: scale(1.02);
-    text-shadow: 0 0 20px rgba(116, 192, 252, 0.3);
 }
 
 .highlight {

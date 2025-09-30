@@ -353,20 +353,24 @@ function typeWriter(element, text, speed = 100) {
     }
 }
 
-// Dynamic greeting text functionality
+// Dynamic greeting text functionality - continuous alternation
+let greetingInterval;
+let isAmharic = true; // Start with Amharic
+
 function changeGreeting() {
     try {
         const greetingElement = document.getElementById('welcome-greeting');
         if (greetingElement) {
             const currentText = greetingElement.innerHTML;
             
-            // Check if current text contains "ሰላም" (Amharic greeting)
-            if (currentText.includes('ሰላም')) {
+            if (isAmharic) {
                 // Change to English
                 greetingElement.innerHTML = currentText.replace('ሰላም', 'Hi');
-            } else if (currentText.includes('Hi')) {
+                isAmharic = false;
+            } else {
                 // Change back to Amharic
                 greetingElement.innerHTML = currentText.replace('Hi', 'ሰላም');
+                isAmharic = true;
             }
         }
     } catch (error) {
@@ -374,17 +378,40 @@ function changeGreeting() {
     }
 }
 
-// Add click event listener to the greeting
+// Start continuous alternation
+function startGreetingAlternation() {
+    try {
+        const greetingElement = document.getElementById('welcome-greeting');
+        if (greetingElement) {
+            // Start with Amharic
+            isAmharic = true;
+            
+            // Alternate every 3 seconds
+            greetingInterval = setInterval(changeGreeting, 3000);
+        }
+    } catch (error) {
+        console.warn('Failed to start greeting alternation:', error);
+    }
+}
+
+// Stop alternation (optional - can be used if needed)
+function stopGreetingAlternation() {
+    if (greetingInterval) {
+        clearInterval(greetingInterval);
+        greetingInterval = null;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     try {
         const greetingElement = document.getElementById('welcome-greeting');
         if (greetingElement) {
-            // Add cursor pointer style
-            greetingElement.style.cursor = 'pointer';
-            greetingElement.title = 'Click to switch between Amharic and English';
+            // Remove click functionality and cursor pointer
+            greetingElement.style.cursor = 'default';
+            greetingElement.title = 'Greeting alternates between Amharic and English';
             
-            // Add click event listener
-            greetingElement.addEventListener('click', changeGreeting);
+            // Start the continuous alternation after a short delay
+            setTimeout(startGreetingAlternation, 2000); // Start after 2 seconds
         }
         
         const welcomeTitle = document.querySelector('.welcome-text h1');
