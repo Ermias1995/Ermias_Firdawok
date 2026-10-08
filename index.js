@@ -139,12 +139,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Project Navigation - one dot per .project card, so new projects stay in sync
 const projects = document.querySelectorAll('.project');
+const projectTrack = document.getElementById('project-track');
+const projectViewport = document.querySelector('.project-viewport');
 const navDotsContainer = document.querySelector('.project-navigation');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 let currentProjectIndex = 0;
 let navDots = [];
+let galleryTimer = null;
 
 function buildNavDots() {
     if (!navDotsContainer) return;
@@ -166,7 +170,7 @@ function buildNavDots() {
 }
 
 function showProject(index) {
-    if (!projects.length) return;
+    if (!projects.length || !projectTrack) return;
 
     const safeIndex = Math.max(0, Math.min(index, projects.length - 1));
 
@@ -174,6 +178,11 @@ function showProject(index) {
         const isActive = i === safeIndex;
         project.classList.toggle('is-active', isActive);
         project.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        if (isActive) {
+            project.removeAttribute('inert');
+        } else {
+            project.setAttribute('inert', '');
+        }
     });
 
     navDots.forEach((dot, i) => {
@@ -182,8 +191,73 @@ function showProject(index) {
         dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
 
+    projectTrack.style.transform = `translateX(-${safeIndex * 100}%)`;
     currentProjectIndex = safeIndex;
     updateNavigationButtons();
+    sizeViewport();
+    syncGalleryTimer();
+}
+
+function sizeViewport() {
+    const active = projects[currentProjectIndex];
+    if (!projectViewport || !active) return;
+    projectViewport.style.height = `${active.offsetHeight}px`;
+}
+
+function initProjectGalleries() {
+    document.querySelectorAll('.project-image').forEach((frame) => {
+        const images = [...frame.querySelectorAll('img')];
+        if (images.length < 2) return;
+
+        frame.classList.add('has-gallery');
+        images.forEach((img, i) => {
+            img.classList.toggle('is-shown', i === 0);
+            img.setAttribute('aria-hidden', i === 0 ? 'false' : 'true');
+        });
+
+        const dots = document.createElement('div');
+        dots.className = 'image-dots';
+        dots.setAttribute('aria-hidden', 'true');
+        images.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.className = 'image-dot' + (i === 0 ? ' is-shown' : '');
+            dots.appendChild(dot);
+        });
+        frame.appendChild(dots);
+        frame.dataset.galleryIndex = '0';
+    });
+}
+
+function stepGallery(frame) {
+    const images = [...frame.querySelectorAll('img')];
+    if (images.length < 2) return;
+
+    const index = Number(frame.dataset.galleryIndex || 0);
+    const next = (index + 1) % images.length;
+
+    images.forEach((img, i) => {
+        img.classList.toggle('is-shown', i === next);
+        img.classList.toggle('is-leaving', i === index);
+        img.setAttribute('aria-hidden', i === next ? 'false' : 'true');
+    });
+
+    frame.dataset.galleryIndex = String(next);
+    frame.querySelectorAll('.image-dot').forEach((dot, i) => {
+        dot.classList.toggle('is-shown', i === next);
+    });
+}
+
+function syncGalleryTimer() {
+    if (galleryTimer) {
+        clearInterval(galleryTimer);
+        galleryTimer = null;
+    }
+    if (reduceMotion) return;
+
+    const frame = projects[currentProjectIndex]?.querySelector('.project-image.has-gallery');
+    if (!frame) return;
+
+    galleryTimer = setInterval(() => stepGallery(frame), 3200);
 }
 
 // Function to update navigation button states
@@ -220,7 +294,16 @@ if (nextBtn) {
 }
 
 buildNavDots();
+initProjectGalleries();
 showProject(0);
+requestAnimationFrame(() => {
+    if (projectTrack) projectTrack.classList.add('is-ready');
+    if (projectViewport) projectViewport.classList.add('is-ready');
+});
+
+window.addEventListener('resize', () => {
+    sizeViewport();
+});
 
 // Navbar background on scroll
 window.addEventListener('scroll', () => {
@@ -353,6 +436,7 @@ window.addEventListener('load', () => {
         setTimeout(() => {
             document.body.style.opacity = '1';
         }, 100);
+        sizeViewport();
     } catch (error) {
         console.warn('Failed to add loading animation:', error);
     }
