@@ -93,10 +93,16 @@ function updateParticlesTheme(theme) {
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
+function setMenuOpen(isOpen) {
+    hamburger.classList.toggle('active', isOpen);
+    navMenu.classList.toggle('active', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+}
+
 hamburger.addEventListener('click', () => {
     try {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
+        setMenuOpen(!navMenu.classList.contains('active'));
     } catch (error) {
         console.warn('Failed to toggle mobile menu:', error);
     }
@@ -106,8 +112,7 @@ hamburger.addEventListener('click', () => {
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         try {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            setMenuOpen(false);
         } catch (error) {
             console.warn('Failed to close mobile menu:', error);
         }
@@ -132,101 +137,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Project Navigation - Horizontal sliding carousel
+// Project Navigation - one dot per .project card, so new projects stay in sync
 const projects = document.querySelectorAll('.project');
-const navDots = document.querySelectorAll('.nav-dot');
+const navDotsContainer = document.querySelector('.project-navigation');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 
 let currentProjectIndex = 0;
+let navDots = [];
 
-// Show first project by default, hide others
-if (projects.length > 0) {
-    // Hide all projects first
+function buildNavDots() {
+    if (!navDotsContainer) return;
+
+    navDotsContainer.replaceChildren();
     projects.forEach((project, index) => {
-        if (index !== 0) {
-            project.style.display = 'none';
-            project.style.opacity = '0';
-            project.style.visibility = 'hidden';
-        }
+        const title = project.querySelector('h3')?.textContent?.trim() || `Project ${index + 1}`;
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'nav-dot';
+        dot.setAttribute('role', 'tab');
+        dot.dataset.project = project.id || String(index);
+        dot.setAttribute('aria-label', `Go to ${title}`);
+        dot.setAttribute('aria-selected', 'false');
+        dot.addEventListener('click', () => showProject(index));
+        navDotsContainer.appendChild(dot);
     });
-    
-    // Show first project
-    const isMobile = window.innerWidth <= 768;
-    projects[0].style.display = isMobile ? 'block' : 'flex';
-    projects[0].style.opacity = '1';
-    projects[0].style.visibility = 'visible';
-    navDots[0].classList.add('active');
-    
-    // Ensure first project content is visible
-    const firstProjectContent = projects[0].querySelector('.project-content');
-    const firstProjectDescription = projects[0].querySelector('.project-description');
-    const firstProjectHeader = projects[0].querySelector('.project-header');
-    const firstProjectTeam = projects[0].querySelector('.project-team');
-    const firstProjectTech = projects[0].querySelector('.project-tech');
-    const firstProjectTags = projects[0].querySelector('.project-tags');
-    const firstProjectLinks = projects[0].querySelector('.project-links');
-    
-    // Make sure all content is visible
-    [firstProjectContent, firstProjectDescription, firstProjectHeader, firstProjectTeam, firstProjectTech, firstProjectTags, firstProjectLinks].forEach(element => {
-        if (element) {
-            element.style.opacity = '1';
-            element.style.visibility = 'visible';
-            element.style.display = element === firstProjectContent ? 'flex' : '';
-        }
-    });
-    
-    // Update button states
-    updateNavigationButtons();
+    navDots = navDotsContainer.querySelectorAll('.nav-dot');
 }
 
-// Function to show project
 function showProject(index) {
-    // Remove active class from all dots
-    navDots.forEach(d => d.classList.remove('active'));
-    
-    // Add active class to clicked dot
-    navDots[index].classList.add('active');
-    
-    // Hide all projects
-    projects.forEach(project => {
-        project.style.display = 'none';
-        project.style.opacity = '0';
-        project.style.visibility = 'hidden';
+    if (!projects.length) return;
+
+    const safeIndex = Math.max(0, Math.min(index, projects.length - 1));
+
+    projects.forEach((project, i) => {
+        const isActive = i === safeIndex;
+        project.classList.toggle('is-active', isActive);
+        project.setAttribute('aria-hidden', isActive ? 'false' : 'true');
     });
-    
-    // Show selected project
-    if (projects[index]) {
-        // Check if mobile view
-        const isMobile = window.innerWidth <= 768;
-        projects[index].style.display = isMobile ? 'block' : 'flex';
-        projects[index].style.opacity = '1';
-        projects[index].style.visibility = 'visible';
-        
-        console.log(`Showing project ${index}:`, projects[index].querySelector('h3')?.textContent);
-        
-        // Ensure all content elements are visible
-        const projectContent = projects[index].querySelector('.project-content');
-        const projectDescription = projects[index].querySelector('.project-description');
-        const projectHeader = projects[index].querySelector('.project-header');
-        const projectTeam = projects[index].querySelector('.project-team');
-        const projectTech = projects[index].querySelector('.project-tech');
-        const projectTags = projects[index].querySelector('.project-tags');
-        const projectLinks = projects[index].querySelector('.project-links');
-        
-        // Make sure all content is visible
-        [projectContent, projectDescription, projectHeader, projectTeam, projectTech, projectTags, projectLinks].forEach(element => {
-            if (element) {
-                element.style.opacity = '1';
-                element.style.visibility = 'visible';
-                element.style.display = element === projectContent ? 'flex' : '';
-            }
-        });
-        
-        console.log('Project content and description should be visible now');
-    }
-    
-    currentProjectIndex = index;
+
+    navDots.forEach((dot, i) => {
+        const isActive = i === safeIndex;
+        dot.classList.toggle('active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    currentProjectIndex = safeIndex;
     updateNavigationButtons();
 }
 
@@ -263,12 +219,8 @@ if (nextBtn) {
     });
 }
 
-// Project navigation functionality - horizontal sliding
-navDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showProject(index);
-    });
-});
+buildNavDots();
+showProject(0);
 
 // Navbar background on scroll
 window.addEventListener('scroll', () => {
@@ -333,62 +285,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Typing effect for welcome section
-function typeWriter(element, text, speed = 100) {
-    try {
-        let i = 0;
-        element.innerHTML = '';
-        
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        
-        type();
-    } catch (error) {
-        console.warn('Failed to start typing effect:', error);
-    }
-}
-
 // Dynamic greeting text functionality - continuous alternation
 let greetingInterval;
-let isAmharic = true; // Start with Amharic
+let isAmharic = true;
 
 function changeGreeting() {
     try {
-        const greetingElement = document.getElementById('welcome-greeting');
-        if (greetingElement) {
-            const currentText = greetingElement.innerHTML;
-            
-            if (isAmharic) {
-                // Change to English
-                greetingElement.innerHTML = currentText.replace('ሰላም', 'Hi');
-                isAmharic = false;
-            } else {
-                // Change back to Amharic
-                greetingElement.innerHTML = currentText.replace('Hi', 'ሰላም');
-                isAmharic = true;
-            }
-        }
+        const greetingWord = document.getElementById('greeting-word');
+        if (!greetingWord) return;
+
+        greetingWord.textContent = isAmharic ? 'Hi' : 'ሰላም';
+        isAmharic = !isAmharic;
     } catch (error) {
         console.warn('Failed to change greeting:', error);
     }
 }
 
-// Start continuous alternation
 function startGreetingAlternation() {
     try {
-        const greetingElement = document.getElementById('welcome-greeting');
-        if (greetingElement) {
-            // Start with Amharic
-            isAmharic = true;
-            
-            // Alternate every 3 seconds
-            greetingInterval = setInterval(changeGreeting, 3000);
-        }
+        const greetingWord = document.getElementById('greeting-word');
+        if (!greetingWord) return;
+
+        isAmharic = true;
+        greetingWord.textContent = 'ሰላም';
+        greetingInterval = setInterval(changeGreeting, 3000);
     } catch (error) {
         console.warn('Failed to start greeting alternation:', error);
     }
@@ -411,15 +331,9 @@ document.addEventListener('DOMContentLoaded', () => {
             greetingElement.title = 'Greeting alternates between Amharic and English';
             
             // Start the continuous alternation after a short delay
-            setTimeout(startGreetingAlternation, 2000); // Start after 2 seconds
+            setTimeout(startGreetingAlternation, 2000);
         }
-        
-        const welcomeTitle = document.querySelector('.welcome-text h1');
-        if (welcomeTitle) {
-            const originalText = welcomeTitle.textContent;
-            typeWriter(welcomeTitle, originalText, 50);
-        }
-        
+
         // Initialize particles with current theme
         const currentTheme = html.getAttribute('data-theme');
         setTimeout(() => {
@@ -444,16 +358,3 @@ window.addEventListener('load', () => {
     }
 });
 
-// Handle window resize for responsive project display
-window.addEventListener('resize', () => {
-    try {
-        const isMobile = window.innerWidth <= 768;
-        projects.forEach((project, index) => {
-            if (project.style.display !== 'none') {
-                project.style.display = isMobile ? 'block' : 'flex';
-            }
-        });
-    } catch (error) {
-        console.warn('Failed to handle window resize:', error);
-    }
-});
