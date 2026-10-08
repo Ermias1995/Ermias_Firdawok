@@ -330,6 +330,32 @@ p {
     max-width: 40rem;
 }
 
+.hire-me-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #14a800;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    text-decoration: none;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 25px rgba(20, 168, 0, 0.35);
+    transition: var(--transition);
+}
+
+.hire-me-btn i {
+    font-size: 1.1rem;
+}
+
+.hire-me-btn:hover {
+    background-color: #108a00;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(20, 168, 0, 0.45);
+}
+
 .welcome-contacts {
     display: flex;
     gap: 1.5rem;
@@ -1532,6 +1558,11 @@ footer p {
     
     .welcome-bio {
         font-size: 1rem;
+    }
+
+    .hire-me-btn {
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .welcome-contacts {
