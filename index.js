@@ -368,55 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Dynamic greeting text functionality - continuous alternation
-let greetingInterval;
-let isAmharic = true;
-
-function changeGreeting() {
-    try {
-        const greetingWord = document.getElementById('greeting-word');
-        if (!greetingWord) return;
-
-        greetingWord.textContent = isAmharic ? 'Hi' : 'ሰላም';
-        isAmharic = !isAmharic;
-    } catch (error) {
-        console.warn('Failed to change greeting:', error);
-    }
-}
-
-function startGreetingAlternation() {
-    try {
-        const greetingWord = document.getElementById('greeting-word');
-        if (!greetingWord) return;
-
-        isAmharic = true;
-        greetingWord.textContent = 'ሰላም';
-        greetingInterval = setInterval(changeGreeting, 3000);
-    } catch (error) {
-        console.warn('Failed to start greeting alternation:', error);
-    }
-}
-
-// Stop alternation (optional - can be used if needed)
-function stopGreetingAlternation() {
-    if (greetingInterval) {
-        clearInterval(greetingInterval);
-        greetingInterval = null;
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     try {
-        const greetingElement = document.getElementById('welcome-greeting');
-        if (greetingElement) {
-            // Remove click functionality and cursor pointer
-            greetingElement.style.cursor = 'default';
-            greetingElement.title = 'Greeting alternates between Amharic and English';
-            
-            // Start the continuous alternation after a short delay
-            setTimeout(startGreetingAlternation, 2000);
-        }
-
         // Initialize particles with current theme
         const currentTheme = html.getAttribute('data-theme');
         setTimeout(() => {

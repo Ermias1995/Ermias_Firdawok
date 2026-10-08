@@ -274,16 +274,45 @@ p {
     z-index: 2;
 }
 
-.welcome-text h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    transition: var(--transition);
+.welcome-kicker {
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
 }
 
-#welcome-greeting {
-    cursor: default;
-    transition: var(--transition);
+.welcome-title {
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+    line-height: 1.05;
+}
+
+.welcome-tagline {
+    font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.caret {
+    display: inline-block;
+    width: 2px;
+    height: 0.85em;
+    margin-left: 0.2rem;
+    background: var(--text-primary);
+    vertical-align: -0.08em;
+    animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+    0%, 45% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .caret { animation: none; }
 }
 
 .highlight {
@@ -294,10 +323,11 @@ p {
     background-clip: text;
 }
 
-.welcome-text p {
-    font-size: 1.2rem;
+.welcome-bio {
+    font-size: 1.15rem;
     margin-bottom: 2rem;
     color: var(--text-secondary);
+    max-width: 40rem;
 }
 
 .welcome-contacts {
@@ -1403,8 +1433,17 @@ footer p {
         text-align: center;
     }
     
-    .welcome-text h1 {
-        font-size: 2.5rem;
+    .welcome-title {
+        font-size: 2.6rem;
+    }
+
+    .welcome-tagline {
+        font-size: 2.2rem;
+    }
+
+    .welcome-bio {
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .interests-grid {
@@ -1483,11 +1522,15 @@ footer p {
         font-size: 2rem;
     }
     
-    .welcome-text h1 {
-        font-size: 2rem;
+    .welcome-title {
+        font-size: 2.1rem;
+    }
+
+    .welcome-tagline {
+        font-size: 1.8rem;
     }
     
-    .welcome-text p {
+    .welcome-bio {
         font-size: 1rem;
     }
     
@@ -1605,8 +1648,16 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    .welcome-text h1 {
-        font-size: 1.8rem;
+    .welcome-kicker {
+        font-size: 0.95rem;
+    }
+
+    .welcome-title {
+        font-size: 1.85rem;
+    }
+
+    .welcome-tagline {
+        font-size: 1.55rem;
     }
     
     .interests-grid {
