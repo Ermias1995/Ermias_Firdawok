@@ -380,6 +380,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Copy email button
+const copyEmailBtn = document.getElementById('copy-email-btn');
+if (copyEmailBtn) {
+    const copyEmailLabel = copyEmailBtn.querySelector('.copy-email-label');
+    const defaultLabel = copyEmailLabel ? copyEmailLabel.textContent : 'Copy my email';
+    let copyResetTimer;
+
+    copyEmailBtn.addEventListener('click', async () => {
+        const email = copyEmailBtn.dataset.email;
+        if (!email) return;
+
+        try {
+            await navigator.clipboard.writeText(email);
+        } catch (error) {
+            console.warn('Clipboard API failed, falling back:', error);
+            try {
+                const tempInput = document.createElement('input');
+                tempInput.value = email;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+            } catch (fallbackError) {
+                console.warn('Failed to copy email:', fallbackError);
+                return;
+            }
+        }
+
+        copyEmailBtn.classList.add('is-copied');
+        if (copyEmailLabel) copyEmailLabel.textContent = 'Copied!';
+
+        clearTimeout(copyResetTimer);
+        copyResetTimer = setTimeout(() => {
+            copyEmailBtn.classList.remove('is-copied');
+            if (copyEmailLabel) copyEmailLabel.textContent = defaultLabel;
+        }, 2000);
+    });
+}
+
+// Contact form - submits to Formspree without leaving the page
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = document.getElementById('form-submit-btn');
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (formStatus) {
+            formStatus.textContent = 'Sending...';
+            formStatus.className = 'form-status';
+        }
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { Accept: 'application/json' }
+            });
+
+            if (response.ok) {
+                if (formStatus) {
+                    formStatus.textContent = "Thanks! Your message is on its way \u2014 I'll reply soon.";
+                    formStatus.className = 'form-status is-success';
+                }
+                contactForm.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.warn('Failed to send contact message:', error);
+            if (formStatus) {
+                formStatus.textContent = "Something went wrong. Please try again or email me directly.";
+                formStatus.className = 'form-status is-error';
+            }
+        } finally {
+            if (submitBtn) submitBtn.disabled = false;
+        }
+    });
+}
+
 // Add loading animation
 window.addEventListener('load', () => {
     try {
