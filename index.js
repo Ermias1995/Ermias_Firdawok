@@ -443,7 +443,7 @@ if (contactForm) {
 
             if (response.ok) {
                 if (formStatus) {
-                    formStatus.textContent = "Thanks! Your message is on its way \u2014 I'll reply soon.";
+                    formStatus.textContent = "Thanks! Your message is on its way, I'll reply soon.";
                     formStatus.className = 'form-status is-success';
                 }
                 contactForm.reset();
