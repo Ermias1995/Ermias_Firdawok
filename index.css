@@ -1899,6 +1899,31 @@ footer p {
     .description-toggle {
         margin-bottom: 0.5rem;
     }
+
+    .experience-description {
+        overflow: hidden;
+        position: relative;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    .experience-description.has-overflow:not(.is-expanded)::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2.2rem;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--background-light) 85%);
+        pointer-events: none;
+    }
+
+    .experience-description.is-expanded {
+        display: block !important;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+    }
 }
 
 @media (max-width: 480px) {

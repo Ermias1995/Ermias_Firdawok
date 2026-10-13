@@ -205,9 +205,10 @@ function sizeViewport() {
 }
 
 // Mobile: clamp long descriptions and add a Read more / Show less toggle
-// so a single project card never forces the whole page to scroll.
-function setupDescriptionToggles() {
-    document.querySelectorAll('.project-description').forEach((desc) => {
+// so a single project/experience card never forces the whole page to scroll.
+// Shared by the project carousel and the experience timeline.
+function setupDescriptionToggles(selector) {
+    document.querySelectorAll(selector).forEach((desc) => {
         const next = desc.nextElementSibling;
         if (next && next.classList.contains('description-toggle')) return;
 
@@ -222,17 +223,17 @@ function setupDescriptionToggles() {
             toggle.setAttribute('aria-expanded', String(isExpanded));
             const label = toggle.querySelector('span');
             if (label) label.textContent = isExpanded ? 'Show less' : 'Read more';
-            sizeViewport();
+            if (desc.classList.contains('project-description')) sizeViewport();
         });
 
         desc.insertAdjacentElement('afterend', toggle);
     });
 }
 
-function refreshDescriptionToggles() {
+function refreshDescriptionToggles(selector) {
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-    document.querySelectorAll('.project-description').forEach((desc) => {
+    document.querySelectorAll(selector).forEach((desc) => {
         const toggle = desc.nextElementSibling;
         if (!toggle || !toggle.classList.contains('description-toggle')) return;
 
@@ -260,7 +261,7 @@ function refreshDescriptionToggles() {
         }
     });
 
-    sizeViewport();
+    if (selector === '.project-description') sizeViewport();
 }
 
 function initProjectGalleries() {
@@ -354,9 +355,11 @@ if (nextBtn) {
 
 buildNavDots();
 initProjectGalleries();
-setupDescriptionToggles();
+setupDescriptionToggles('.project-description');
+setupDescriptionToggles('.experience-description');
 showProject(0);
-refreshDescriptionToggles();
+refreshDescriptionToggles('.project-description');
+refreshDescriptionToggles('.experience-description');
 requestAnimationFrame(() => {
     if (projectTrack) projectTrack.classList.add('is-ready');
     if (projectViewport) projectViewport.classList.add('is-ready');
@@ -367,7 +370,8 @@ window.addEventListener('resize', () => {
     if (resizeRaf) return;
     resizeRaf = requestAnimationFrame(() => {
         resizeRaf = null;
-        refreshDescriptionToggles();
+        refreshDescriptionToggles('.project-description');
+        refreshDescriptionToggles('.experience-description');
     });
 });
 
