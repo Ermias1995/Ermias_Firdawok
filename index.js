@@ -204,6 +204,65 @@ function sizeViewport() {
     projectViewport.style.height = `${active.offsetHeight}px`;
 }
 
+// Mobile: clamp long descriptions and add a Read more / Show less toggle
+// so a single project card never forces the whole page to scroll.
+function setupDescriptionToggles() {
+    document.querySelectorAll('.project-description').forEach((desc) => {
+        const next = desc.nextElementSibling;
+        if (next && next.classList.contains('description-toggle')) return;
+
+        const toggle = document.createElement('button');
+        toggle.type = 'button';
+        toggle.className = 'description-toggle';
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = '<span>Read more</span> <i class="fa-solid fa-chevron-down"></i>';
+
+        toggle.addEventListener('click', () => {
+            const isExpanded = desc.classList.toggle('is-expanded');
+            toggle.setAttribute('aria-expanded', String(isExpanded));
+            const label = toggle.querySelector('span');
+            if (label) label.textContent = isExpanded ? 'Show less' : 'Read more';
+            sizeViewport();
+        });
+
+        desc.insertAdjacentElement('afterend', toggle);
+    });
+}
+
+function refreshDescriptionToggles() {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+    document.querySelectorAll('.project-description').forEach((desc) => {
+        const toggle = desc.nextElementSibling;
+        if (!toggle || !toggle.classList.contains('description-toggle')) return;
+
+        if (!isMobile) {
+            desc.classList.remove('has-overflow', 'is-expanded');
+            toggle.style.display = 'none';
+            toggle.setAttribute('aria-expanded', 'false');
+            return;
+        }
+
+        const wasExpanded = desc.classList.contains('is-expanded');
+        if (wasExpanded) desc.classList.remove('is-expanded');
+
+        const overflowing = desc.scrollHeight > desc.clientHeight + 2;
+        desc.classList.toggle('has-overflow', overflowing);
+
+        if (wasExpanded) desc.classList.add('is-expanded');
+
+        toggle.style.display = overflowing ? 'inline-flex' : 'none';
+        if (!overflowing) {
+            desc.classList.remove('is-expanded');
+            toggle.setAttribute('aria-expanded', 'false');
+            const label = toggle.querySelector('span');
+            if (label) label.textContent = 'Read more';
+        }
+    });
+
+    sizeViewport();
+}
+
 function initProjectGalleries() {
     document.querySelectorAll('.project-image').forEach((frame) => {
         const images = [...frame.querySelectorAll('img')];
@@ -295,14 +354,21 @@ if (nextBtn) {
 
 buildNavDots();
 initProjectGalleries();
+setupDescriptionToggles();
 showProject(0);
+refreshDescriptionToggles();
 requestAnimationFrame(() => {
     if (projectTrack) projectTrack.classList.add('is-ready');
     if (projectViewport) projectViewport.classList.add('is-ready');
 });
 
+let resizeRaf = null;
 window.addEventListener('resize', () => {
-    sizeViewport();
+    if (resizeRaf) return;
+    resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = null;
+        refreshDescriptionToggles();
+    });
 });
 
 // Navbar background on scroll

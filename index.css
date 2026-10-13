@@ -838,6 +838,35 @@ p {
     display: none;
 }
 
+.description-toggle {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+    align-self: flex-start;
+    margin-top: -0.25rem;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.25rem 0;
+    cursor: pointer;
+}
+
+.description-toggle:hover {
+    text-decoration: underline;
+}
+
+.description-toggle i {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+}
+
+.description-toggle[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -1837,8 +1866,32 @@ footer p {
     
     .project-description {
         min-height: auto;
-        max-height: none;
-        overflow-y: visible;
+        overflow: hidden;
+        position: relative;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+    }
+
+    .project-description.has-overflow:not(.is-expanded)::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2.4rem;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), var(--background-light) 80%);
+        pointer-events: none;
+    }
+
+    .project-description.is-expanded {
+        display: block !important;
+        -webkit-line-clamp: unset;
+        overflow: visible;
+    }
+
+    .description-toggle {
+        margin-bottom: 0.5rem;
     }
 }
 
